@@ -8,6 +8,16 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
+
+
+app.get('/', (req, res) => {
+  // Send a 'Hello, World!' response
+  // Send an HTML file as the response
+  res.sendFile(path.join(__dirname, 'File-Transfer-Project.html'));
+});
+
+
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/');
@@ -55,9 +65,5 @@ app.post('/send-email', upload.single('file'), (req, res) => {
 app.listen(3000, async () => {
   console.log('Server is running on port 3000');
 
-  // Dynamically import the `open` module
-  const open = await import('open');
-
-  // Automatically open the HTML file in the default browser
-  open.default('D:/Html11/File-Transfer-Project.html');
+ 
 });

@@ -10,12 +10,9 @@ app.use(cors());
 
 
 
-app.get('/', (req, res) => {
-  // Send a 'Hello, World!' response
-  // Send an HTML file as the response
-  res.sendFile(path.join(__dirname, 'File-Transfer-Project.html'));
-});
-
+app.get("/",function(req,res){
+  res.sendFile(path.join(__dirname+"/File-Transfer-Project.html"))
+})
 
 
 const storage = multer.diskStorage({
@@ -62,7 +59,7 @@ app.post('/send-email', upload.single('file'), (req, res) => {
   });
 });
 
-app.listen(3000, async () => {
+app.listen(3000 ,() => {
   console.log('Server is running on port 3000');
 
  

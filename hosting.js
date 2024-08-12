@@ -1,17 +1,16 @@
-const http = require('http');
+// Import the Express module
+const express = require('express');
 
-// Create a server object
-const server = http.createServer((req, res) => {
-    // Set the response HTTP header with HTTP status and Content-Type
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
+// Create an Express application
+const app = express();
 
-    // Send the response body as "Hello World"
-    res.end('Hello World\n');
+// Define a route for the root URL ('/')
+app.get('/', (req, res) => {
+  // Send a 'Hello, World!' response
+  res.send('Hello, World!');
 });
 
-// Set the server to listen on port 3000
-app.listen(port, '0.0.0.0', () => {
-    console.log(`Server is running on port ${port}`);
-  });
-  
+// Start the server on port 3000
+app.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000');
+});

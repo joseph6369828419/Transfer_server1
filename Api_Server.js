@@ -9,10 +9,7 @@ const app = express();
 app.use(cors());
 
 
-
-app.get("/",function(req,res){
-  res.sendFile(path.join(__dirname+"/File-Transfer-Project.html"))
-})
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 const storage = multer.diskStorage({
@@ -23,6 +20,15 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname));
   }
 });
+
+
+
+app.get("/",function(req,res){
+  res.sendFile(path.join(__dirname+"/File-Transfer-Project.html"))
+  
+})
+
+
 
 const upload = multer({ storage });
 
